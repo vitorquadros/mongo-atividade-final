@@ -29,9 +29,7 @@ export const TableProds = (props) => {
             {props.produtos.map((produto, key) => {
                 return (
                     <tr key={key}>
-                        <td>
-                            <a href="">{produto.id_prod}</a>
-                        </td>
+                        <td>{produto.id_prod}</td>
                         <td>{produto.nome}</td>
                         <td>{produto.descricao}</td>
                         <td>{produto.qtd_estoque}</td>

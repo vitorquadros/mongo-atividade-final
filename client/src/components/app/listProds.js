@@ -20,30 +20,22 @@ function ListProds(props) {
     const [filter, setFilter] = useState('nome')
     const maxPrice = 25000
     const minPrice = 10
-    const [priceRange, setPriceRange] = useState(maxPrice)
-    const filterNames = {
-        'id_prod': 'ID',
-        'preco': 'Preço',
-        'qtd_estoque': 'Quantidade em Estoque'
-    }
+    const [priceRange, setRange] = useState(maxPrice)
     const [sorted, setSorted] = useState(false)
 
     useEffect(() => {
         !sorted && loadProdsFb()
     }, [order, filter, sorted])
 
-    async function loadProdsFb() {
+    const loadProdsFb = async ()=>{
         await getOrderByChild(order, receiveProds)
         console.log({ 'ordenar': order })
     }
 
-    function receiveProds(data) {
+    const receiveProds = async (data)=>{
         if (!data || data === 'undefined')
             return console.log('Error')
-        data.map((produto) => {
-            prods.push({ ...produto })
-            // console.log({ "produto": { ...produto } })
-        })
+        data.map((produto) => prods.push(produto))
         prods.length?setData([...prods]):setLoad(false)
     }
 
@@ -54,13 +46,13 @@ function ListProds(props) {
     const handlerSelectFilter = (event) => {
         setFilter(event.target.value)
     }
-    
+
     const handlerApplyFilter = () => {
         prods.length = 0;
         setData([...prods])
         setInterval(() => setLoad(false), 3000)
         const termo = document.getElementById('termo').value
-        if (termo){
+        if (termo) {
             getFilterByChild(filter, termo, receiveProds)
             setLoad(true)
         }
@@ -85,23 +77,24 @@ function ListProds(props) {
         prods.length = 0;
         setData([...prods])
         setLoad(true)
-        setPriceRange(newRange)
+        setRange(newRange)
         getPriceRange(newRange, receiveProds)
-        console.log({newRange, priceRange})
+        console.log({ newRange, priceRange })
     }
 
     const sortCacheListedProducts = (column) => {
-        setData([...data.reverse()])
+        setData(data.reverse())
         setSorted(!sorted)
+        console.log({sorted})
     }
 
     return (<div className='flex-container'>
         <div className={'filterFormContainer'}>
-            <Select id='order' 
-                    name='order' 
-                    value={order}
-                    label="Ordenar por:"
-                    onChange={handlerSelectOrder}>
+            <Select id='order'
+                name='order'
+                value={order}
+                label="Ordenar por:"
+                onChange={handlerSelectOrder}>
                 <option value={'id_prod'} >ID</option>
                 <option value={'preco'} >Preco</option>
                 <option value={'qtd_estoque'}>Quantidade</option>
@@ -109,20 +102,20 @@ function ListProds(props) {
             </Select>
             <div className='filterPanel'>
                 <div>
-                    <Select id='filter' 
-                            name='field'
-                            label="Filtrar por:"
-                            value={filter}
-                            onChange={handlerSelectFilter}>
+                    <Select id='filter'
+                        name='field'
+                        label="Filtrar por:"
+                        value={filter}
+                        onChange={handlerSelectFilter}>
                         <option value={'nome'} >Nome</option>
                         <option value={'descricao'} >Descricao</option>
                     </Select>
                 </div>
                 <div>
-                    <TextInput  id="termo" 
-                                placeholder='Digite o termo'
-                                label="Termo de filtro:"
-                                onChange={handlerApplyFilter} />
+                    <TextInput id="termo"
+                        placeholder='Digite o termo'
+                        label="Termo de filtro:"
+                        onChange={handlerApplyFilter} />
                 </div>
             </div>
             <label htmlFor="price_range">Preco:</label>
@@ -158,10 +151,10 @@ function ListProds(props) {
         </div>
         <div className={'tableContainer'}>
             {(data.length > 0)
-                ?<TableProds 
-                    produtos={data} 
+                ? <TableProds
+                    produtos={data}
                     sorted={sorted}
-                    sort={sortCacheListedProducts}/>
+                    sort={sortCacheListedProducts} />
                 : (loading) ? <Row>
                     <Col s={12}>
                         <ProgressBar />
