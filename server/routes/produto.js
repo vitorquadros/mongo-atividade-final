@@ -1,20 +1,21 @@
 import {
 	index,
 	show,
-	store, 
-	update, 
+	store,
+	update,
 	remove,
 	removeMany,
-	filterPrice}
-from '../app/controllers/produto.js'
+	filterPrice
+}
+	from '../app/controllers/produto.js'
 import { Router } from 'express';
 
 const routes = Router();
-routes.get('/', (req,res,next) => index(req,res))
-routes.get('/filter_price/', (req,res,next) => filterPrice(req,res))
-routes.get('/:id', (req,res,next) => show(req,res))
-routes.post('/', (req,res,next) => store(req,res))
-routes.put('/:id',(req,res,next) => update(req,res))
-routes.delete('/many/',(req,res,next) => removeMany(req,res))
-routes.delete('/:id',(req,res,next) => remove(req,res))
+routes.get('/', index)
+routes.get('/filter_price/', filterPrice)
+routes.get('/:id', show)
+routes.post('/', store)
+routes.put('/:id', update)
+routes.delete('/many/', removeMany)
+routes.delete('/:id', remove)
 export default routes;
