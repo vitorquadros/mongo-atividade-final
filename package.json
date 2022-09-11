@@ -1,11 +1,11 @@
 {
   "type": "module",
-  "name": "node-react",
+  "name": "atividade_final_dba_mongo",
   "version": "1.0.0",
   "scripts": {
-    "client-pc": "cd client&& set PORT=3001&& npm start",
-    "server-pc": "npx nodemon .\\server\\server.js",
-    "dev-pc": "concurrently --kill-others-on-fail \"npm run server-pc\" \"npm run client-pc\"",
+    "client-win": "cd client && set PORT=3001&& npm start",
+    "server-win": "npx nodemon .\\server\\server.js",
+    "win-dev": "concurrently --kill-others-on-fail \"npm run server-win\" \"npm run client-win\"",
     "client": "cd client && PORT=3001 npm start",
     "server": "npx nodemon server/server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
@@ -14,11 +14,10 @@
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "express": "^4.16.2",
-    "method-override": "^3.0.0",
-    "mongodb": "^4.4.1",
-    "nodemon": "^2.0.19"
+    "mongodb": "^4.4.1"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "nodemon": "^2.0.19"
   }
 }
