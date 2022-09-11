@@ -5,7 +5,7 @@ import {
     getMostExpensive,
     getMostCheap,
     getPriceRange
-} from '../middleware/ProdutosFetch';
+} from '../providers/ProdutosProvider';
 import { TableProds } from './tableProds';
 import 'materialize-css';
 import { Button, Select, Row, Col, ProgressBar, TextInput } from 'react-materialize';
