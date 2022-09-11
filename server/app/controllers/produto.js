@@ -62,7 +62,6 @@ const store = async (req, res) => {
             desconto: formData.desconto ? +formData.desconto : null
         }
 
-
         if (!produto.preco && formData.preco.indexOf(','))
             produto.preco = +formData.preco.replace(',', '.')
 
