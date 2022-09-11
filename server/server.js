@@ -13,39 +13,13 @@ const corsOptions = {
 }
 
 app.get('/', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+  res.send({ express: 'Servidor Express Rodando!' });
 });
 
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(methodOverride())
-// app.use((err, req, res, next)=>{
-
-//   // res.format({
-//   //   'text/plain': function () {
-//   //     res.send(err.message)
-//   //   },
-  
-//   //   'text/html': function () {
-//   //     res.send(`<p>${err.message}</p>`)
-//   //   },
-  
-//   //   'application/json': function () {
-//   //     res.send({ message: 'rota:'+err.message })
-//   //   },
-  
-//   //   default: function () {
-//   //     // log the request and respond with 406
-//   //     res.status(406).send('Not Acceptable')
-//   //   }
-//   // })
-//   // res.end()
-//   res.json({ message: 'rota:'+err.message })
-//   res.end()
-// });
 app.use('/produtos',produtoRoute)
-
 
 app.listen(port,() => {
     console.log(`Servidor rodando na porta ${port}`);
