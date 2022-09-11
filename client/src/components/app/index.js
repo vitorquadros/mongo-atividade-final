@@ -1,15 +1,13 @@
 import React from 'react';
 import ListProds from './listProds.js'
 
-const App=(props)=>{
-
-    return(
-        <div >
+const App = (props) => (
+    <div >
         <div className='titlePage'>
             Produtos
         </div>
         <ListProds></ListProds>
-    </div>);
-}
+    </div>
+);
 
 export default App;
