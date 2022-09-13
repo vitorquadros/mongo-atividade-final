@@ -85,5 +85,5 @@ Parâmetros:
 | `qtd_estoque`| `number`   | **Obrigatório**. Número inteiro positivo|
 | `preco`| `number`   | **Obrigatório**. Definição do preço, armazenado como *Number*|
 | `importado`| `boolean`   | Parâmetro opcional do tipo booleano, padrão é falso|
-| `desconto`| `string`   |  Parâmetro opcinal da porcentagem de desconto, padrão é *NULO*|
+| `desconto`| `number`   |  Parâmetro opcinal da porcentagem de desconto, padrão é *NULO*|
 Obs: enviar parâmetros no corpo da requisição no formato **form-url-encode**
