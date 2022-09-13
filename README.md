@@ -39,3 +39,51 @@ Windows:
 cd ..
 npm run win-dev
 ```
+
+## Docuemntação da API
+
+### Retorna todos os produtos
+
+```http
+  GET /produtos
+```
+
+### Retorna produto por ID
+
+```http
+  GET /produtos/${id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `id`       | `number`   | **Obrigatório**. Identificador do produto|
+
+### Retorna produtos filtrados por preço
+
+```http
+  GET /produtos/filter_price/?greater=${min}&less=${max}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `min`       | `number`   | **Obrigatório**. Limite inicial da faixa de preços|
+| `max`       | `number`   | **Obrigatório**. Limite final da faixa de preços|
+Obs: os limites não são inclusos na resposta.
+
+### Registra um novo produto
+
+```http
+  POST /produtos
+```
+Parâmetros:
+
+| Campo   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `id_prod`| `number`   | **Obrigatório**. Um identificador numérico para o produto|
+| `nome`| `string`   | **Obrigatório**. Nome do produto, sem limite de tamanho|
+| `descricao`| `string`   | **Obrigatório**. Descrição do produto, sem limite de tamanho |
+| `qtd_estoque`| `number`   | **Obrigatório**. Número inteiro positivo|
+| `preco`| `number`   | **Obrigatório**. Definição do preço, armazenado como *Number*|
+| `importado`| `boolean`   | Parâmetro opcional do tipo booleano, padrão é falso|
+| `desconto`| `string`   |  Parâmetro opcinal da porcentagem de desconto, padrão é *NULO*|
+Obs: enviar parâmetos no corpo da requisição no formato **form-url-encode**
