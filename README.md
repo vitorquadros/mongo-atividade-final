@@ -2,7 +2,7 @@
 
 Este repositório possui um projeto fullstack com servidor e cliente, separados nas respectivas pastas, **server** e **client**. A atividade consiste no desenvolvimento da camada de modelo do servidor, localizada na pasta ***server/app/models***. 
 
-Um arquivo inicial chamado ***produtosDao.js*** possui os métodos a serem implementados. Não altere a assinatura destes métodos e retorne exatamente o tipo de dados indicados no retorno.
+Um arquivo inicial chamado [***produtosDao.js***](https://github.com/g1ll/atividade_final_dba_mongo/blob/main/server/app/models/produtosDao.js) possui os métodos a serem implementados. Não altere a assinatura destes métodos e retorne exatamente o tipo de dados indicados no retorno.
 
 A aplicação possui uma API e um front-end que consome algumas rotas, onde será possível testar o funcionamento dos métodos da camanda de modelo. No entanto, a API também possui outras rotas que deverão ser testadas através de um cliente HTTP.
 
