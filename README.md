@@ -86,4 +86,4 @@ Parâmetros:
 | `preco`| `number`   | **Obrigatório**. Definição do preço, armazenado como *Number*|
 | `importado`| `boolean`   | Parâmetro opcional do tipo booleano, padrão é falso|
 | `desconto`| `string`   |  Parâmetro opcinal da porcentagem de desconto, padrão é *NULO*|
-Obs: enviar parâmetos no corpo da requisição no formato **form-url-encode**
+Obs: enviar parâmetros no corpo da requisição no formato **form-url-encode**
