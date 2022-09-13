@@ -2,6 +2,8 @@ import client from '../../database/dbConnection.js'
 
 const collection = client.db('loja').collection('produtos')
 
+//Retorna produtos ordenados de acordo com o campo definido em orderBy
+//e ordenados na ordem definida por reverse, se verdadeiro ordem reversa (ASC)
 const getAllProdutos = async (orderBy='id_prod', reverse = false) => {
     try {
         let resultados = []
@@ -15,6 +17,7 @@ const getAllProdutos = async (orderBy='id_prod', reverse = false) => {
     }
 }
 
+//Busca produto definido por idProd igual ao campo id_prod
 const getProdutoById = async (idProd) => {
     try {
         let produto = {}
@@ -28,6 +31,8 @@ const getProdutoById = async (idProd) => {
     }
 }
 
+//Registra um novo produto no banco, 
+//retorna verdadeiro se inserido com sucesso
 const insertProduto = async (produto) => {
     try {
       
@@ -40,6 +45,8 @@ const insertProduto = async (produto) => {
     }
 }
 
+//Atualiza um produto no banco
+//retorna verdadeiro se atualizado com sucesso
 const updateProduto = async (new_produto) => {
     try {
         
@@ -54,6 +61,7 @@ const updateProduto = async (new_produto) => {
     }
 }
 
+//Remove um produto do banco
 const deleteProduto = async (id_prod) => {
     try {
        
