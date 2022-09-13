@@ -40,7 +40,7 @@ cd ..
 npm run win-dev
 ```
 
-## Docuementação da API
+## Documentação da API
 
 ### Retorna todos os produtos
 
