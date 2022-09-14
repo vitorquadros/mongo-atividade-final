@@ -78,7 +78,7 @@ Obs: a busca é realizada por palavras, não é possível buscar por partes de u
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `id`       | `number`   | **Obrigatório**. Identificador do produto|
+| `id`       | `number`   | **Obrigatório**. Identificador do produto, valor do campo `id_prod` no banco|
 
 ### Retorna produtos filtrados por preço
 
@@ -92,7 +92,7 @@ Obs: a busca é realizada por palavras, não é possível buscar por partes de u
 | `max`       | `number`   | **Obrigatório**. Limite final da faixa de preços|
 Obs: os limites não são inclusos na resposta.
 
-### Registra um novo produto
+### Registrar um novo produto
 
 ```http
   POST /produtos
@@ -109,3 +109,43 @@ Parâmetros:
 | `importado`| `boolean`   | Parâmetro opcional do tipo booleano, padrão é falso|
 | `desconto`| `number`   |  Parâmetro opcinal da porcentagem de desconto, padrão é *NULO*|
 Obs: enviar parâmetros no corpo da requisição no formato **form-url-encode**
+
+### Atualizar um produto passando o id
+
+```http
+  PUT /produtos/${id}
+```
+| Parâmetros   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `id`| `number`   | **Obrigatório**. Um identificador numérico para o produto, valor do campo `id_prod` no banco|
+
+No corpo da requisição deverão ser passados os seguintes parâmetros a serem atualizados no formato **form-url-encode**:
+| Campo   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`| `string`   | Nome do produto, sem limite de tamanho|
+| `descricao`| `string`   | Descrição do produto, sem limite de tamanho |
+| `qtd_estoque`| `number`   |  Número inteiro positivo|
+| `preco`| `number`   | Definição do preço, armazenado como *Number*|
+| `importado`| `boolean`   | Parâmetro opcional do tipo booleano, padrão é falso|
+| `desconto`| `number`   |  Parâmetro opcinal da porcentagem de desconto, padrão é *NULO*|
+Obs: Nenhum parâmetro é **Obrigatório**, os parâmetros  não enviados não serão alterados.
+
+### Remover um produto por ID
+
+```http
+  DELETE /produtos/${id}
+```
+| Parâmetros   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `id`| `number`   | **Obrigatório**. Um identificador numérico para o produto, valor do campo `id_prod` no banco|
+
+
+### Remover varios produtos
+
+```http
+  DELETE /produtos/many
+```
+No corpo da requisição deverão ser passados os seguintes parâmetros a serem atualizados no formato **form-url-encode**:
+| Campo   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `ids`| `array`   | **Obrigatório**. Array de valores numéricos representando os ids dos produtos a serem alterados|
