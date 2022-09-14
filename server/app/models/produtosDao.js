@@ -1,11 +1,12 @@
-import client from '../../database/dbConnection.js'
+import {client,db} from '../../database/dbConnection.js'
 
-const collection = client.db('loja').collection('produtos')
+const collection = client.db(db).collection('produtos')
 
 //Retorna produtos ordenados de acordo com o campo definido em orderBy
 //e ordenados na ordem definida por reverse, se verdadeiro ordem reversa (ASC)
 const getAllProdutos = async (orderBy='id_prod', reverse = false) => {
     try {
+        console.log('getAllProdutos')
         let resultados = []
 
         //implementar aqui
@@ -17,8 +18,8 @@ const getAllProdutos = async (orderBy='id_prod', reverse = false) => {
     }
 }
 
-//Busca produto definido por idProd igual ao campo id_prod
-const getProdutoById = async (idProd) => {
+//Busca produto definido por id_prod igual ao campo id_prod
+const getProdutoById = async (id_prod) => {
     try {
         let produto = {}
         
@@ -33,9 +34,10 @@ const getProdutoById = async (idProd) => {
 
 //Registra um novo produto no banco, 
 //retorna verdadeiro se inserido com sucesso
+//API - Testar com cliente HTTP
 const insertProduto = async (produto) => {
     try {
-      
+        console.log(produto)
         //implementar aqui
         
         return true 
@@ -47,6 +49,7 @@ const insertProduto = async (produto) => {
 
 //Atualiza um produto no banco
 //retorna verdadeiro se atualizado com sucesso
+//API - Testar com cliente HTTP
 const updateProduto = async (new_produto) => {
     try {
         
@@ -62,6 +65,7 @@ const updateProduto = async (new_produto) => {
 }
 
 //Remove um produto do banco
+//API - Testar com cliente HTTP
 const deleteProduto = async (id_prod) => {
     try {
        
@@ -74,6 +78,7 @@ const deleteProduto = async (id_prod) => {
     }
 }
 
+//API - Testar com cliente HTTP
 const deleteManyProdutos = async (ids) => {
     try {
         
@@ -126,7 +131,7 @@ const changeIndexes = async (field) => {
 
     if(!textIndexes.length){
         let newIndex = {}
-        newIndex[field] = 'text'
+        newIndex[field] = 'text' //field = 'nome' => {nome:'text'}
         collection.createIndex(newIndex)
     }
 }

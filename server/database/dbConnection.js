@@ -18,4 +18,4 @@ if (client.db('admin').command({ "ping": 1 }))
     console.log("Conectado ao Banco MongoDB!");
 else throw Error("Erro ao conectar ao banco !!")
 
-export default client;
+export {client,db};
