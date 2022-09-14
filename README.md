@@ -42,13 +42,35 @@ npm run win-dev
 
 ## Documentação da API
 
-### Retorna todos os produtos
+### Retornar todos os produtos
 
 ```http
   GET /produtos
 ```
+Obs: resultados ornedados pelo identificador padrão do banco de dados, gerados automaticamente no registro dos mesmos. O campo `id_prod` na
 
-### Retorna produto por ID
+### Filtrar produtos ordenados por campo específico
+
+```http
+  GET /produtos?order=${campo}&reverse=${valor}
+```
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `order`     | `string`   | Campo a ser usado para a ordenação na busca, padrão é o `id_prod`|
+| `reverse`   | `string`   | Opcao {0:1} para buscar em orden reversa ou não, padrão é o valor `0`|
+
+### Filtrar produtos por palavras em campos de texto
+
+```http
+  GET /produtos?field=${campo}&search=${termo}
+```
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `field`     | `string`   | Campo a ser usado para a busca textual, padrão é o `nome`. Os valores possíveis são `nome` ou `descricao`|
+| `search`    | `string`   | Termo de busca a ser usando para filtrar os campos de texto.|
+Obs: a busca é realizada por palavras, não é possível buscar por partes de uma palavra, ou seja, o termo `SS` não resultará em conteúdos com a palavra `SSD`.
+
+### Retornar produto por ID
 
 ```http
   GET /produtos/${id}
