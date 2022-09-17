@@ -31,6 +31,7 @@ const getAllProdutos = async (orderBy = 'id_prod', reverse = false) => {
  * Rotas da API:
  *  GET /produtos/${id}
  * @param {*} id_prod ID do produto a ser retornado
+ * @returns Retorna um objeto de Produto
  */
 const getProdutoById = async (id_prod) => {
     try {
