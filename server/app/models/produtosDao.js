@@ -7,7 +7,6 @@ const collection = client.db(db).collection('produtos')
  * Rotas da API:
  * GET /produtos
  * GET /produtos?order=${campo}&reverse=${valor}
- * GET /produtos?field=${campo}&search=${termo}
  * 
  * @param {*} orderBy campos a ser utilizado na ordenacao
  * @param {*} reverse booleano para a determinar a ordem ascendente (true) ou descendente (false)
