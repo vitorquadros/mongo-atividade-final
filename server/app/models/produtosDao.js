@@ -142,7 +142,7 @@ const deleteManyProdutos = async (ids) => {
  * @param {*} term termo de busca (palavra a ser encontrada)
  * @returns Array de objetos Produto
  */
-const getFiltredProdutos = async (field = 'nome', term = '') => {
+const getFilteredProdutos = async (field = 'nome', term = '') => {
     try {
         let resultados = []
         console.log({ field, term })
@@ -182,16 +182,12 @@ const changeIndexes = async (field) => {
 
     const indexes = await collection.indexes()
     const textIndexes = indexes.filter(index => index.key?._fts === 'text')
-
-    textIndexes.forEach(async index => {
-        if (index.name !== field + '_text')
-            await collection.dropIndex(index.name)
-    })
-
-    if (!textIndexes.length) {
-        let newIndex = {}
-        newIndex[field] = 'text' //field = 'nome' => {nome:'text'}
-        collection.createIndex(newIndex)
+    const indexName = textIndexes[0]?.name
+    
+    if (!indexName || indexName !== field + '_text'){
+        if(indexName)
+            await collection.dropIndex(indexName)
+        collection.createIndex({[field]:'text'})
     }
 }
 
@@ -202,6 +198,6 @@ export {
     updateProduto,
     deleteProduto,
     deleteManyProdutos,
-    getFiltredProdutos,
+    getFilteredProdutos,
     getProdutosPriceRange
 }
