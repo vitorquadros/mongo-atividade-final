@@ -187,7 +187,7 @@ const changeIndexes = async (field) => {
     if (!indexName || indexName !== field + '_text'){
         if(indexName)
             await collection.dropIndex(indexName)
-        collection.createIndex({[field]:'text'})
+            await collection.createIndex({[field]:'text'})
     }
 }
 
