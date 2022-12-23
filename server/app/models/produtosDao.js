@@ -160,12 +160,12 @@ const getFilteredProdutos = async (field = 'nome', term = '') => {
  * Rota da API:
  * GET /produtos/filter_price/?greater=${min}&less=${max}
  * Parametros:
- * @param {*} greater valor inicial do intervalor
- * @param {*} less valor final do intervalo
+ * @param {*} min valor inicial do intervalor
+ * @param {*} max valor final do intervalo
  * @param {*} sort ordenar por maior ou menor preco (1,-1)
  * @returns Array de objetos Produto
  */
-const getProdutosPriceRange = async (greater = 0, less = 0, sort = 1) => {
+const getProdutosPriceRange = async (min = 0, max = 0, sort = 1) => {
     try {
         let resultados = []
 
